@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support and Logistics SOP</title>
+    <style>
+        body {
+            background-color: #dedede;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .ag-format-container {
+            width: 1142px;
+            margin: 0 auto;
+        }
+        .ag-courses_box {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 50px 0;
+        }
+        .ag-courses_item {
+            flex-basis: calc(33.33333% - 30px);
+            margin: 0 15px 30px;
+            overflow: hidden;
+            border-radius: 28px;
+        }
+        .ag-courses-item_link {
+            display: block;
+            padding: 30px 20px;
+            background-color: #002401;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none; /* Add this line to remove the underline */
+
+        }
+        .ag-courses-item_link:hover,
+        .ag-courses-item_link:hover .ag-courses-item_date {
+            text-decoration: none;
+            color: #FFF;
+        }
+        .ag-courses-item_link:hover .ag-courses-item_bg {
+            transform: scale(10);
+        }
+        .ag-courses-item_title {
+            min-height: 87px;
+            margin: 0 0 25px;
+            overflow: hidden;
+            font-weight: bold;
+            font-size: 30px;
+            color: #FFF;
+            z-index: 2;
+            position: relative;
+        }
+        .ag-courses-item_date-box {
+            font-size: 18px;
+            color: #FFF;
+            z-index: 2;
+            position: relative;
+        }
+        .ag-courses-item_date {
+            font-weight: bold;
+            color: #18b83b;
+            transition: color .5s ease;
+        }
+        .ag-courses-item_bg {
+            height: 128px;
+            width: 128px;
+            background-color: #09a32a;
+            z-index: 1;
+            position: absolute;
+            top: -75px;
+            right: -75px;
+            border-radius: 50%;
+            transition: all .5s ease;
+        }
+        .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        @media only screen and (max-width: 979px) {
+            .ag-courses_item {
+                flex-basis: calc(50% - 30px);
+            }
+            .ag-courses-item_title {
+                font-size: 24px;
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            .ag-format-container {
+                width: 96%;
+            }
+        }
+        @media only screen and (max-width: 639px) {
+            .ag-courses_item {
+                flex-basis: 100%;
+            }
+            .ag-courses-item_title {
+                min-height: 72px;
+                line-height: 1;
+                font-size: 24px;
+            }
+            .ag-courses-item_link {
+                padding: 22px 40px;
+            }
+            .ag-courses-item_date-box {
+                font-size: 16px;
+            }
+        }
+        img.img-fluid {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    margin: 10px; /* Optional: Adds some space from the edges */
+    max-width: 220px; /* Optional: Sets a maximum width to ensure it doesn't occupy too much space */
+
+
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed positioning */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
+    overflow: hidden; /* Prevent scrolling of the modal background */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Dark background for the modal */
+    margin: auto; /* Center the modal */
+    padding: 20px;
+    width: 80%; /* Width of the modal */
+    max-width: 600px; /* Maximum width for larger screens */
+    border-radius: 10px;
+    color: rgb(0, 0, 0); /* Set text color to black */
+    position: relative; /* Ensure position context for centering */
+    top: 50%; /* Move down 50% of the viewport height */
+    transform: translateY(-50%); /* Adjust to center vertically */
+    max-height: 80vh; /* Maximum height of the modal */
+    overflow-y: auto; /* Enable vertical scrolling for the content */
+    max-height: 80vh; /* Maximum height of the modal */
+    overflow-y: auto; /* Enable vertical scrolling for the content */
+}
+
+/* Custom scrollbar styles */
+.modal-content::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f9f9f9; /* Track color */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #898989; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners for the scrollbar handle */
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #000000; /* Darker shade on hover */
+}
+
+.close-button {
+    color: #aaa; /* Color for close button */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: rgb(109, 106, 106); /* Change close button color on hover */
+    text-decoration: none;
+}
+body.no-scroll {
+    overflow: hidden; /* Prevent scrolling */
+}
+    </style>
+</head>
+<body>
+    <img src="test/Icone.png" class="img-fluid" alt="...">
+
+    <div class="ag-format-container">
+        <div class="ag-courses_box">
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title"> Purpose </div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Scope</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Communication Channel</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Key Stakeholders</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Responsibilities</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Escalation Procedure</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Handling Delivery Slot Issues</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Dark Stores: Smiles Market and Smiles Market Abu Dhabi</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Compliance and Documentation</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Version Control</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="contentText"></div>
+        </div>
+    </div>
+    <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("modal");
+    const closeButton = document.querySelector(".close-button");
+    const contentText = document.getElementById("contentText");
+
+    const cardContent = {
+        "Purpose":    `  <h1>Purpose</h1>
+<p>To define clear procedures for the collaboration between the Customer Support team and the Logistics Department, ensuring timely resolutions of issues related to:</p>
+<ul>
+    <li>Deliveries</li>
+    <li>Store Responsiveness</li>
+    <li>Picker Management
+        <ul>
+            <li>Dedicated Stores</li>
+            <li>Dark Stores</li>
+        </ul>
+    </li>
+</ul>`,
+        "Scope": `<h1>Scope</h1>
+<p>This SOP applies to all interactions between the CS team and the Logistics Department, specifically for handling escalations related to:</p>
+<ul>
+    <li>Delivery Slots</li>
+    <li>Pickers</li>
+    <li>Delivery Issues
+        <ul>
+            <li>Dedicated Stores</li>
+            <li>Dark Stores</li>
+        </ul>
+    </li>
+</ul>`,
+        "Communication Channel":`   <h1>Communication Channels</h1>
+<ul>
+    <li>Slack Channel for Communication:
+        <ul>
+            <li>ops-excellence-cs-mp-logs</li>
+            <li>cs-logistics</li>
+        </ul>
+    </li>
+</ul>`,
+        "Key Stakeholders": `<h1>Key Stakeholders</h1>
+<ul>
+    <li>Logistics Department Head: Sathish Kumar, Head of Dark Stores & Logistics.</li>
+    <li>Customer Support Team: Responsible for raising escalations and addressing customer inquiries.</li>
+</ul>`,
+        "Responsibilities": `<h1>Responsibilities</h1>
+<ul>
+    <li>Logistics Department: Manages the Dispatch team, pickers in dedicated stores, and Smiles dark stores. Ensures delivery slots are correctly set and resolves escalations from the CS team.</li>
+    <li>CS Team: Handles customer complaints and escalates to the Logistics team only after attempting to resolve the issue with the store or picker directly.</li>
+</ul>`,
+        "Escalation Procedure": `  <h1>Escalation Procedure</h1>
+
+<ol>
+    <li>Initial Issue Handling with the Dedicated Store
+        <ul>
+            <li>CSRs should always first attempt to resolve issues directly with the store picker in the dedicated store.
+                <ul>
+                    <li>Use the WhatsApp group to communicate with the store’s pickers, as they are typically responsive.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Criteria for Escalation to Logistics
+        <ul>
+            <li>Only escalate to the Logistics team if:
+                <ul>
+                    <li>No response has been received from the store picker after initial outreach.</li>
+                    <li>There is an urgent delivery issue that needs to be addressed (e.g., wrong delivery slots for orders).</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Escalation Process
+        <ul>
+            <li>Escalate the issue to the Logistics team using the Slack channels <strong>ops-excellence-cs-mp-logs</strong> or <strong>cs-logistics</strong>.</li>
+            <li>Provide all necessary details, including the order number, store name, customer’s issue, and attempted resolutions with the store.</li>
+        </ul>
+    </li>
+</ol>
+`,
+        "Handling Delivery Slot Issues":` <h1>Handling Delivery Slot Issues</h1>
+<ul>
+    <li>Instant Orders and Delivery Slot Issues:
+        <ul>
+            <li>If instant orders are added to the wrong delivery slot (e.g., assigned to the first slot of the day instead of the correct one), escalate this issue to the Logistics team.</li>
+            <li>The Logistics team will be responsible for adjusting the delivery slot to the correct time.</li>
+        </ul>
+    </li>
+</ul>
+`, "Dark Stores: Smiles Market and Smiles Market Abu Dhabi": `<h1>Dark Stores: Smiles Market and Smiles Market Abu Dhabi</h1>
+<ul>
+    <li>Smiles Market and Smiles Market Abu Dhabi are dark stores managed by the Logistics Department.</li>
+    <li>If there are any issues with delivery times, item availability, or picker responsiveness, follow the standard escalation process mentioned above.</li>
+</ul>`,
+"Compliance and Documentation": `<h1>Compliance and Documentation</h1>
+<ul>
+    <li>Ensure all communications with the Logistics Department are logged in the appropriate channels.</li>
+    <li>Keep track of escalations raised to ensure timely follow-up and resolution.</li>
+</ul>`,
+"Version Control": `<h1>Version Control</h1>
+<ul>
+    <li>Version: 1.1</li>
+    <li>Last Updated: September 2024</li>
+    <li>Next Review: January 2025</li>
+    <li>Reviewed by: Customer Support & Logistics Managers</li>
+</ul>`
+    };
+
+    document.querySelectorAll('.ag-courses_item').forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor click behavior
+            const title = this.querySelector('.ag-courses-item_title').textContent.trim();
+            contentText.innerHTML = cardContent[title]; // Set the content HTML
+            modal.style.display = "block"; // Show the modal
+            document.body.classList.add('no-scroll'); // Add class to prevent body scrolling
+
+        });
+    });
+
+    closeButton.addEventListener('click', function() {
+        modal.style.display = "none"; // Hide the modal
+        document.body.classList.remove('no-scroll'); // Remove class to allow scrolling again
+
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none"; // Hide the modal if outside of it is clicked
+            document.body.classList.remove('no-scroll'); // Remove class to allow scrolling again
+
+        }
+    });
+});
+    </script>
+</body>
+</html>
